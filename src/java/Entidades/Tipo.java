@@ -19,7 +19,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Cássio
+ * @author Bruna
  */
 @Entity
 @Table(name = "tipo")
@@ -96,7 +96,7 @@ public class Tipo implements Serializable {
 
     @Override
     public String toString() {
-        return idTipo + "";
+        return "Entidades.Tipo[ idTipo=" + idTipo + " ]";
     }
     
 }

@@ -55,7 +55,8 @@
                                     <form role="form" action="${pageContext.request.contextPath}/tipoLista">
                                         <div class="form-group">
                                             <label>ID</label>
-                                            <input class="form-control" name="idTipo">
+                                            <% DAOs.DAOTipo daoTipo = new DAOs.DAOTipo();%>
+                                            <input class="form-control" name="idTipo" value="<%=daoTipo.autoIdTipo()%>" readonly="">
                                         </div>
                                         <div class="form-group">
                                             <label>Tipo</label>

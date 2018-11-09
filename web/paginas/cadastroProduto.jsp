@@ -55,7 +55,8 @@
                                 <form role="form" action="${pageContext.request.contextPath}/produtoLista">
                                     <div class="form-group">
                                         <label>ID</label>
-                                        <input class="form-control" name="idProduto">
+                                        <% DAOs.DAOProduto daoProduto = new DAOs.DAOProduto();%>
+                                        <input class="form-control" name="idProduto" value="<%=daoProduto.autoIdProduto()%>" readonly="">
                                     </div>
                                     <div class="form-group">
                                         <label>Nome</label>

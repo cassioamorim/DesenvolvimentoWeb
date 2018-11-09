@@ -1,3 +1,4 @@
+<%@page import="DAOs.DAOMarca"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +55,8 @@
                                     <form role="form" action="${pageContext.request.contextPath}/marcaLista">
                                         <div class="form-group">
                                             <label>ID</label>
-                                            <input class="form-control" name="idMarca">
+                                            <% DAOMarca daoMarca = new DAOMarca();%>
+                                            <input class="form-control" name="idMarca" value="<%=daoMarca.autoIdMarca()%>" readonly="">
                                         </div>
                                         <div class="form-group">
                                             <label>Marca</label>
