@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<jsp:useBean id="dao" class="DAOs.DAOMarca"/>
+<jsp:useBean id="daoMarca" class="DAOs.DAOMarca"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +67,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach var="marca" items="${dao.listInOrderNome()}">
+                                            <c:forEach var="marca" items="${daoMarca.listInOrderNome()}">
                                                 <tr>
                                                     <td>${marca.getIdMarca()}</td>
                                                     <td>${marca.getNome()}</td>

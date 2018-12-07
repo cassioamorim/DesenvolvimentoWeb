@@ -1,3 +1,15 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*, 
+        DAOs.DAOTipo ,
+        Entidades.Tipo" %>
+<%
+    DAOTipo daoTipo = new DAOTipo();
+    Tipo tipo = new Tipo();
+    String editando = request.getParameter("idTipo");
+    if (editando != null) {
+        tipo = daoTipo.listById(Integer.parseInt(request.getParameter("idTipo"))).get(0);
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +21,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Cadastro de cliente</title>
+        <title>Cadastro de Tipo</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -55,12 +67,16 @@
                                     <form role="form" action="${pageContext.request.contextPath}/tipoLista">
                                         <div class="form-group">
                                             <label>ID</label>
-                                            <% DAOs.DAOTipo daoTipo = new DAOs.DAOTipo();%>
-                                            <input class="form-control" name="idTipo" value="<%=daoTipo.autoIdTipo()%>" readonly="">
+                                            <% if (editando == null) {%>
+                                            <input class="form-control" name="idTipo" value="<%=tipo.getIdTipo()%>" readonly="">
+                                            <% } else {%>
+                                            <span class="form-control" name="idTipo" value="<%=tipo.getIdTipo()%>" readonly=""></span>
+                                            <% }%>
+                                            <input class="form-control"  type="hidden" name="idTipo" value="<%=tipo.getNome()%>"/>
                                         </div>
                                         <div class="form-group">
                                             <label>Tipo</label>
-                                            <input class="form-control" name="nomeTipo">
+                                            <input class="form-control" name="nomeTipo" value="<%=editando != null ? tipo.getNome() : ""%>">
                                         </div>
                                         <button type="submit" class="btn btn-default">Enviar dados</button>
                                         <button type="reset" class="btn btn-default">Apagar dados</button>

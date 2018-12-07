@@ -35,12 +35,10 @@ public class MarcaServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        int idMarca = 0;
         String nomeMarca = "";
         DAOMarca daoMarca = new DAOMarca();
         Marca marca = new Marca();
         try (PrintWriter out = response.getWriter()) {
-            idMarca = Integer.parseInt(request.getParameter("idMarca"));
             marca.setIdMarca(daoMarca.autoIdMarca());
 
             nomeMarca = request.getParameter("nomeMarca");

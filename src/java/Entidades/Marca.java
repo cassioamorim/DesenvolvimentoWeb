@@ -19,7 +19,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Bruna
+ * @author Cássio
  */
 @Entity
 @Table(name = "marca")

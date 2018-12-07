@@ -35,27 +35,36 @@ public class TipoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        int idTipo = 0;
         String nomeTipo = "";
         DAOTipo daoTipo = new DAOTipo();
         Tipo tipo = new Tipo();
+        String resultadoTipo = "";
         try (PrintWriter out = response.getWriter()) {
-            idTipo = Integer.parseInt(request.getParameter("idTipo"));
-            tipo.setIdTipo(daoTipo.autoIdTipo());
+            if (!request.getParameter("idTipo").equals("null")) {
+                String idTipo = request.getParameter("idTipo");
+                tipo.setIdTipo(Integer.valueOf(idTipo));
+                
+                nomeTipo = request.getParameter("nomeTipo");
+                tipo.setNome(nomeTipo);
 
-            nomeTipo = request.getParameter("nomeTipo");
-            tipo.setNome(nomeTipo);
-            
-            daoTipo.inserir(tipo);
-            String resultadoTipo = "";
+                daoTipo.atualizar(tipo);
+                resultadoTipo = "";
 
-            resultadoTipo = listaTiposCadastrados();
+                resultadoTipo = listaTiposCadastrados();
+            } else {
+                nomeTipo = request.getParameter("nomeTipo");
+                tipo.setNome(nomeTipo);
 
+                daoTipo.inserir(tipo);
+                resultadoTipo = "";
+
+                resultadoTipo = listaTiposCadastrados();
+            }
             request.getSession().setAttribute("resultadoTipo", resultadoTipo);
             response.sendRedirect(request.getContextPath() + "/paginas/tipoLista.jsp");
         }
     }
-    
+
     protected String listaTipoId(String idTipo) {
         DAOTipo daoTipo = new DAOTipo();
         String tabela = "";

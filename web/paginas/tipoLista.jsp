@@ -5,17 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.*, DAOs.DAOTipo, Entidades.Tipo, java.text.NumberFormat"%>
-
-<%
-
-    Locale ptBr = new Locale("pt", "BR");
-    NumberFormat formatoDinheiro = NumberFormat.getCurrencyInstance(ptBr);
-
-    DAOTipo dao = new DAOTipo();
-    List<Tipo> tipo = dao.listInOrderNome();
-
-%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -71,19 +61,20 @@
                                 <table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 100%;">
                                     <thead>
                                         <tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID Tipo" style="width: 170px;">ID</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID Tipo" style="width: 5px;"></th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID Tipo" style="width: 15px;">ID</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Tipo" style="width: 100px;">Tipo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <%                                            for (Tipo t : tipo) {
-                                        %>
-                                        <tr>
-                                            <td><%=t.getIdTipo()%></td>
-                                            <td><%=t.getNome()%></td>
-                                        </tr>
-                                        <%}%>
-
+                                        <jsp:useBean id="daoTipo" class="DAOs.DAOTipo"/>
+                                        <c:forEach var="tipo" items="${daoTipo.listInOrderNome()}"> 
+                                            <tr>
+                                                <td><a href="${pageContext.request.contextPath}/paginas/cadastroTipo.jsp?id=${tipo.getIdTipo()}">editar</a></td>
+                                                <td>${tipo.getIdTipo()}</td>
+                                                <td>${tipo.getNome()}</td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table></div></div>
                         <!-- /.table-responsive -->

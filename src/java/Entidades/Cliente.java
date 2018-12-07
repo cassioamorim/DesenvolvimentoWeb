@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author Bruna
+ * @author Cássio
  */
 @Entity
 @Table(name = "cliente")
