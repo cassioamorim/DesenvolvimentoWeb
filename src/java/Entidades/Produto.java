@@ -21,10 +21,10 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Cássio
+ * @author a1712217
  */
 @Entity
-@Table(name = "produto")
+@Table(name = "Produto")
 @NamedQueries({
     @NamedQuery(name = "Produto.findAll", query = "SELECT p FROM Produto p")})
 public class Produto implements Serializable {
@@ -144,7 +144,7 @@ public class Produto implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.Produto[ idProduto=" + idProduto + " ]";
+        return idProduto + "";
     }
     
 }

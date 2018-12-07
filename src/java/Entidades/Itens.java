@@ -18,10 +18,10 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Cássio
+ * @author a1712217
  */
 @Entity
-@Table(name = "itens")
+@Table(name = "Itens")
 @NamedQueries({
     @NamedQuery(name = "Itens.findAll", query = "SELECT i FROM Itens i")})
 public class Itens implements Serializable {

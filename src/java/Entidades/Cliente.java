@@ -22,10 +22,10 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author Cássio
+ * @author a1712217
  */
 @Entity
-@Table(name = "cliente")
+@Table(name = "Cliente")
 @NamedQueries({
     @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")})
 public class Cliente implements Serializable {
@@ -160,7 +160,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.Cliente[ cpf=" + cpf + " ]";
+        return cpf + "";
     }
     
 }

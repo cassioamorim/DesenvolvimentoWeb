@@ -3,11 +3,11 @@
         DAOs.DAOTipo ,
         Entidades.Tipo" %>
 <%
-    DAOTipo daoTipo = new DAOTipo();
+    DAOTipo dao = new DAOTipo();
     Tipo tipo = new Tipo();
-    String editando = request.getParameter("idTipo");
+    String editando = request.getParameter("id");
     if (editando != null) {
-        tipo = daoTipo.listById(Integer.parseInt(request.getParameter("idTipo"))).get(0);
+        tipo = dao.listById(Integer.parseInt(request.getParameter("id"))).get(0);
     }
 %>
 <!DOCTYPE html>
@@ -63,24 +63,26 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <form role="form" action="${pageContext.request.contextPath}/tipoLista">
-                                        <div class="form-group">
-                                            <label>ID</label>
-                                            <% if (editando == null) {%>
-                                            <input class="form-control" name="idTipo" value="<%=tipo.getIdTipo()%>" readonly="">
-                                            <% } else {%>
-                                            <span class="form-control" name="idTipo" value="<%=tipo.getIdTipo()%>" readonly=""></span>
-                                            <% }%>
-                                            <input class="form-control"  type="hidden" name="idTipo" value="<%=tipo.getNome()%>"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Tipo</label>
-                                            <input class="form-control" name="nomeTipo" value="<%=editando != null ? tipo.getNome() : ""%>">
-                                        </div>
-                                        <button type="submit" class="btn btn-default">Enviar dados</button>
-                                        <button type="reset" class="btn btn-default">Apagar dados</button>
-                                    </form>
+                                <div class="row">
+                                    <div class="col-lg-6">    
+                                        <form role="form" action="${pageContext.request.contextPath}/tipoLista">
+                                            <div class="form-group">
+                                                <label>ID</label>
+                                                <% if (editando == null) {%>
+                                                <input class="form-control"  type="text" value="<%=dao.autoIdTipo()%>" disabled/>
+                                                <% } else {%>
+                                                <span class="form-control" disabled ><%=tipo.getIdTipo()%></span>
+                                                <% }%>
+                                                <input class="form-control"  type="hidden" name="idTipo" value="<%=tipo.getIdTipo()%>"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Tipo</label>
+                                                <input class="form-control" type="text" name="nome" value="<%=editando != null ? tipo.getNome() : ""%>"/>
+                                            </div>
+                                            <button type="submit" class="btn btn-default">Cadastrar</button>
+                                            <button type="reset" class="btn btn-default">Apagar campos</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

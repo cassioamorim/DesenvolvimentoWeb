@@ -24,10 +24,10 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author Cássio
+ * @author a1712217
  */
 @Entity
-@Table(name = "venda")
+@Table(name = "Venda")
 @NamedQueries({
     @NamedQuery(name = "Venda.findAll", query = "SELECT v FROM Venda v")})
 public class Venda implements Serializable {

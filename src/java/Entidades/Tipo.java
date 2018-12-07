@@ -19,10 +19,10 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Cássio
+ * @author a1712217
  */
 @Entity
-@Table(name = "tipo")
+@Table(name = "Tipo")
 @NamedQueries({
     @NamedQuery(name = "Tipo.findAll", query = "SELECT t FROM Tipo t")})
 public class Tipo implements Serializable {
@@ -96,7 +96,7 @@ public class Tipo implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.Tipo[ idTipo=" + idTipo + " ]";
+        return idTipo + "";
     }
     
 }

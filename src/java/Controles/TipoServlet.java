@@ -44,7 +44,7 @@ public class TipoServlet extends HttpServlet {
                 String idTipo = request.getParameter("idTipo");
                 tipo.setIdTipo(Integer.valueOf(idTipo));
                 
-                nomeTipo = request.getParameter("nomeTipo");
+                nomeTipo = request.getParameter("nome");
                 tipo.setNome(nomeTipo);
 
                 daoTipo.atualizar(tipo);
@@ -52,7 +52,7 @@ public class TipoServlet extends HttpServlet {
 
                 resultadoTipo = listaTiposCadastrados();
             } else {
-                nomeTipo = request.getParameter("nomeTipo");
+                nomeTipo = request.getParameter("nome");
                 tipo.setNome(nomeTipo);
 
                 daoTipo.inserir(tipo);

@@ -64,6 +64,7 @@
                                         </div>
                                         <button type="submit" class="btn btn-default">Cadastrar</button>
                                         <button type="reset" class="btn btn-default">Apagar campos</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
